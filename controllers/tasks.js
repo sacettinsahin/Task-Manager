@@ -1,7 +1,12 @@
 const Task = require("../models/Task");
 
-const getAllTasks = (req, res) => {
-  res.send("Get All Items from contoller");
+const getAllTasks = async (req, res) => {
+  try {
+    const tasks = await Task.find({}); // --> Boş gönderdiğim için hepsini getirecek!
+    res.status(200).json({ tasks });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 };
 
 const createTask = async (req, res) => {
