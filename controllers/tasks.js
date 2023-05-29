@@ -66,7 +66,7 @@ const updateTask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
     const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
-      new: true,
+      new: true, //dönen değer güncellenmiş değer olur. Bu genellikle böyle kullanılacak.
       runValidators: true,
     });
     if (!task) {
